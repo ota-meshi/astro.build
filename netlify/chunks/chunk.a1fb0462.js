@@ -1,0 +1,1 @@
+class i extends HTMLElement{#e;connectedCallback(){"IntersectionObserver"in window&&(this.#e=new IntersectionObserver(([e])=>{this.visible=e.isIntersecting}),this.#e.observe(this))}set visible(e){requestAnimationFrame(()=>{this.setAttribute("visible",`${e}`)})}}customElements.define("star-field",i);
