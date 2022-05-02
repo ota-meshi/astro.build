@@ -1,12 +1,10 @@
 ---
-import Layout from './Page.astro';
+import Layout from './Content.astro';
 import PostHeader from '../components/blog/PostHeader.astro';
 import ProseBlock from '../components/blocks/ProseBlock.astro';
-import Card from '../components/blog/Card.astro';
 import Outro from '../components/blog/Outro.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import Panel from '../components/Panel.astro';
 
 export interface Props {
 	content: {
@@ -37,10 +35,12 @@ const cover = (coverImage || heroImage) && { src: coverImage ?? heroImage, alt: 
 <Layout meta={meta}>
     <Nav slot="nav" />
 
-    <ProseBlock class="blogpost">
+    <ProseBlock>
 		<PostHeader title={title} authors={authors} publishDate={publishDate} {cover} />
 
-		<slot />
+		<article>
+			<slot />
+		</article>
 
 		<Outro tweet={{ title, href: Astro.canonicalURL.toString() }} />
 	</ProseBlock>
@@ -49,19 +49,15 @@ const cover = (coverImage || heroImage) && { src: coverImage ?? heroImage, alt: 
 </Layout>
 
 <style>
-	.blogpost :global(h1) {
-		@apply text-2xl;
-	}
-
-	.blogpost :global(h2) {
+	article :global(h2) {
 		@apply text-lg lg:text-xl;
 	}
 
-	.blogpost :global(h3, h4) {
+	article :global(h3, h4) {
 		@apply text-lg;
 	}
 
-	.blogpost .not-prose {
+	article .not-prose {
 		@apply sm:ml-0 sm:mr-0;
 	}
 </style>

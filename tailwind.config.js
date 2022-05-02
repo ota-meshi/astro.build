@@ -91,7 +91,6 @@ module.exports = {
 				return {
 					DEFAULT: {
 						css: {
-							maxWidth: '75ch',
 							fontSize: 'var(--size-500)',
 							lineHeight: '1.5',
 							// override @tailwindcss/typography colors
